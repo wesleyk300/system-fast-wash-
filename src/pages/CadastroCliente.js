@@ -7,12 +7,12 @@ export default class LoginPage extends React.Component {
     render () {
         return(
         <View style={styles.alinharview}
-                backgroundColor="#e0f0e0"
+                
                 >
             <FormRow>
                     <TextInput
                         style={styles.input}
-                        placeholder="E-mail"
+                        placeholder="Nome"
                         placeholderTextColor="black"
                     />
             </FormRow>
@@ -20,16 +20,22 @@ export default class LoginPage extends React.Component {
             <FormRow>
                     <TextInput 
                         style={styles.input} 
-                        placeholder="Senha"
+                        placeholder="CPF"
                         placeholderTextColor="black"
-                        secureTextEntry
-                    />
+                        />
             </FormRow>
+
+            <FormRow>
+                    <TextInput 
+                        style={styles.input} 
+                        placeholder="Endereço"
+                        placeholderTextColor="black"
+                        />
+            </FormRow>
+
                     <View style={styles.alinharbutton}>
-                        <Button  style={styles.buttonentrar}>Entrar</Button> 
-                        <Button  style={styles.buttoncadastrar}
-                            
-                        >Cadastrar</Button>
+                        <Button  style={styles.buttoncadastrar}>
+                        Cadastrar</Button>
                     </View>                    
         </View>                     
         )
@@ -65,15 +71,15 @@ const styles = StyleSheet.create ({
         color:'white',
         backgroundColor: '#4386ee',
         padding: 10,
-        marginTop: 10,
+        marginTop: 20,
         borderRadius:10,
         width: 200
     },
 
     alinharview:{
         flex: 1,
-        justifyContent: 'center',
-    },
+        backgroundColor:'#e0f0e0'
+        },
 
     alinharbutton:{
         alignItems:'center',

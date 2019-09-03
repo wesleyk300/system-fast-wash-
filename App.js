@@ -1,14 +1,16 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import LoginPage from './src/pages/LoginPage';
+import CadastroCliente from './src/pages/CadastroCliente';
 
 const AppNavigator = createStackNavigator({
-    'Login': {
-        screen: LoginPage
+    
+    'Cadastro': {
+      screen: CadastroCliente
     },
 }, {
     defaultNavigationOptions:{
         title:"System Fast Wash",
-        headerTintColor: "wite",
+        headerTintColor: "white",
         headerStyle:{
           backgroundColor: '#2E8B57',
           borderBottomWidth: 1,
