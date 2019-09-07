@@ -1,11 +1,12 @@
 import React from 'react'
-import {View, TextInput, StyleSheet,Text} from 'react-native';
+import {View, TextInput, StyleSheet,Text,ScrollView} from 'react-native';
 import FormRow from '../components/FormRow';
 import Button from 'react-native-button';
 
 export default class LoginPage extends React.Component {
     render () {
         return(
+            <ScrollView>
         <View style={styles.alinharview}
                 
                 >
@@ -16,6 +17,8 @@ export default class LoginPage extends React.Component {
                         placeholderTextColor="black"
                     />
             </FormRow>
+            
+            
 
             <FormRow>
                     <TextInput 
@@ -37,7 +40,8 @@ export default class LoginPage extends React.Component {
                         <Button  style={styles.buttoncadastrar}>
                         Cadastrar</Button>
                     </View>                    
-        </View>                     
+        </View>
+        </ScrollView>                     
         )
     }
 }
@@ -50,9 +54,9 @@ const styles = StyleSheet.create ({
         fontSize: 18,
         borderWidth: 1,
         borderColor: 'black',
-        backgroundColor: '#8cc53e',
+        //backgroundColor: '#8cc53e',
         borderRadius: 6,
-        marginTop: 20,
+        marginTop: 40,
         //color: '#8cc53e' cor da letra
     },
     
@@ -78,7 +82,7 @@ const styles = StyleSheet.create ({
 
     alinharview:{
         flex: 1,
-        backgroundColor:'#e0f0e0'
+        //backgroundColor:'#e0f0e0'
         },
 
     alinharbutton:{

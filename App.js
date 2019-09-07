@@ -3,10 +3,14 @@ import LoginPage from './src/pages/LoginPage';
 import CadastroCliente from './src/pages/CadastroCliente';
 
 const AppNavigator = createStackNavigator({
+     'Login': {
+      screen: LoginPage
+    },
     
     'Cadastro': {
       screen: CadastroCliente
     },
+
 }, {
     defaultNavigationOptions:{
         title:"System Fast Wash",

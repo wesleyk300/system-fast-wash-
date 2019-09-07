@@ -1,19 +1,113 @@
 import React from 'react'
-import {View, TextInput, StyleSheet,Text} from 'react-native';
+import {View, TextInput, StyleSheet,Text, ActivityIndicator} from 'react-native';
 import FormRow from '../components/FormRow';
 import Button from 'react-native-button';
+import firebase from 'firebase';
+//import * as firebase from "firebase/app";
+//import "firebase/auth";
+//import "firebase/database";
+
 
 export default class LoginPage extends React.Component {
+
+    constructor(props){
+        super (props);
+
+        this.state={
+            mail:'',
+            password:'',
+            isLoading: false,
+            message: '' 
+        }
+    }
+
+    componentDidMount(){
+        const firebaseConfig = {
+            apiKey: "AIzaSyAY4luErnInF6ggzwU_ZJtBwDkUxXcG04U",
+            authDomain: "systemwashfast.firebaseapp.com",
+            databaseURL: "https://systemwashfast.firebaseio.com",
+            projectId: "systemwashfast",
+            storageBucket: "",
+            messagingSenderId: "269048051961",
+            appId: "1:269048051961:web:3a9f57fc49b92b08678a28"
+          };
+            firebase.initializeApp(firebaseConfig);
+    }
+
+    
+    onChangeHandler(field,value){
+        this.setState({
+            [field]: value
+        });
+    }
+
+    tryLogin() {
+        this.setState({isLoading: true});
+
+        const {mail, password} = this.state
+        
+        firebase
+            .auth()
+            .signInWithEmailAndPassword(mail, password)
+            .then(user => {
+                this.setState({message: 'Logado com sucesso'});
+                //console.log('usuario logado', user);
+            })
+            .catch(error => {
+                this.setState({
+                    message: this.getMessageByErrorCode(error.code)
+                });
+                //console.log('usuario não foi logado', error);
+            })
+
+            .then(() => this.setState({ isLoading: false }));
+    }
+
+    getMessageByErrorCode(errorCode){
+        switch (errorCode) {
+            case 'auth/wrong-password':
+                return 'Senha incorreta';
+            case 'auth/user-not-found':
+                return 'Usuário não encontrado';
+            default: 
+                return 'Erro desconhecido';    
+        }
+    }
+
+    renderMessage(){
+           const {message}= this.state;
+           if (!message)
+                return null;
+            return (
+                <View>
+                    <Text>{message}</Text>
+                </View>
+            ) 
+    }
+
+    renderButton(){
+        if (this.state.isLoading)
+            return <ActivityIndicator />;
+        return (
+            <Button style={styles.buttonentrar}
+                    onPress={() => this.tryLogin()}
+            >Entrar </Button>
+
+        );
+    }
+    
     render () {
         return(
         <View style={styles.alinharview}
-                backgroundColor="#e0f0e0"
+                //backgroundColor="#e0f0e0"
                 >
             <FormRow>
                     <TextInput
                         style={styles.input}
                         placeholder="E-mail"
                         placeholderTextColor="black"
+                        value={this.state.mail}
+                        onChangeText={value=>this.onChangeHandler('mail', value)}
                     />
             </FormRow>
 
@@ -23,12 +117,16 @@ export default class LoginPage extends React.Component {
                         placeholder="Senha"
                         placeholderTextColor="black"
                         secureTextEntry
+                        value={this.state.password}
+                        onChangeText={value=>this.onChangeHandler('password', value)}
                     />
             </FormRow>
                     <View style={styles.alinharbutton}>
-                        <Button  style={styles.buttonentrar}>Entrar</Button> 
+                        { this.renderButton()}
+                        { this.renderMessage()}
+                        
+                        
                         <Button  style={styles.buttoncadastrar}
-                            
                         >Cadastrar</Button>
                     </View>                    
         </View>                     
@@ -44,7 +142,7 @@ const styles = StyleSheet.create ({
         fontSize: 18,
         borderWidth: 1,
         borderColor: 'black',
-        backgroundColor: '#8cc53e',
+        //backgroundColor: '#8cc53e',
         borderRadius: 6,
         marginTop: 20,
         //color: '#8cc53e' cor da letra
