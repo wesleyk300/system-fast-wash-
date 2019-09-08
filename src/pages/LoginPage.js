@@ -1,8 +1,9 @@
 import React from 'react'
-import {View, TextInput, StyleSheet,Text, ActivityIndicator} from 'react-native';
+import {View, TextInput, StyleSheet,Text, ActivityIndicator, Alert} from 'react-native';
 import FormRow from '../components/FormRow';
 import Button from 'react-native-button';
 import firebase from 'firebase';
+
 //import * as firebase from "firebase/app";
 //import "firebase/auth";
 //import "firebase/database";
@@ -51,8 +52,12 @@ export default class LoginPage extends React.Component {
             .signInWithEmailAndPassword(mail, password)
             .then(user => {
                 this.setState({message: 'Logado com sucesso'});
+                
                 //console.log('usuario logado', user);
+               
             })
+            
+
             .catch(error => {
                 this.setState({
                     message: this.getMessageByErrorCode(error.code)
@@ -64,14 +69,18 @@ export default class LoginPage extends React.Component {
     }
 
     getMessageByErrorCode(errorCode){
-        switch (errorCode) {
-            case 'auth/wrong-password':
-                return 'Senha incorreta';
-            case 'auth/user-not-found':
-                return 'Usuário não encontrado';
-            default: 
-                return 'Erro desconhecido';    
+        if (errorCode === 'auth/wrong-password'){
+            Alert.alert(
+                'Senha inválida',
+                'Sua senha esta incorreta, digite novamente',
+            )
         }
+        if (errorCode === 'auth/user-not-found'){
+           Alert.alert(
+               'Usuário não encontrado',
+               'Seu e-mail esta incorreto, digite novamente',
+           )        
+       }
     }
 
     renderMessage(){
@@ -127,6 +136,7 @@ export default class LoginPage extends React.Component {
                         
                         
                         <Button  style={styles.buttoncadastrar}
+                        
                         >Cadastrar</Button>
                     </View>                    
         </View>                     
