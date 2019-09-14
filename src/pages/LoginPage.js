@@ -51,7 +51,12 @@ export default class LoginPage extends React.Component {
             .auth()
             .signInWithEmailAndPassword(mail, password)
             .then(user => {
-                this.setState({message: 'Logado com sucesso'});
+                //this.setState({message: 'Logado com sucesso'});
+                this.props.navigation.navigate('Menu') //SE DER PAU APAGUE
+                ;
+                
+
+               
                 
                 //console.log('usuario logado', user);
                
@@ -114,7 +119,7 @@ export default class LoginPage extends React.Component {
                     <TextInput
                         style={styles.input}
                         placeholder="E-mail"
-                        placeholderTextColor="black"
+                        placeholderTextColor="#808080"
                         value={this.state.mail}
                         onChangeText={value=>this.onChangeHandler('mail', value)}
                     />
@@ -124,7 +129,7 @@ export default class LoginPage extends React.Component {
                     <TextInput 
                         style={styles.input} 
                         placeholder="Senha"
-                        placeholderTextColor="black"
+                        placeholderTextColor="#808080"
                         secureTextEntry
                         value={this.state.password}
                         onChangeText={value=>this.onChangeHandler('password', value)}
@@ -136,7 +141,7 @@ export default class LoginPage extends React.Component {
                         
                         
                         <Button  style={styles.buttoncadastrar}
-                        
+                        onPress={() => this.props.navigation.navigate('Cadastro')}
                         >Cadastrar</Button>
                     </View>                    
         </View>                     

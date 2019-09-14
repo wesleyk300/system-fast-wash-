@@ -14,7 +14,7 @@ export default class LoginPage extends React.Component {
                     <TextInput
                         style={styles.input}
                         placeholder="Nome"
-                        placeholderTextColor="black"
+                        placeholderTextColor="#808080"
                     />
             </FormRow>
             
@@ -24,7 +24,7 @@ export default class LoginPage extends React.Component {
                     <TextInput 
                         style={styles.input} 
                         placeholder="CPF"
-                        placeholderTextColor="black"
+                        placeholderTextColor="#808080"
                         />
             </FormRow>
 
@@ -32,14 +32,33 @@ export default class LoginPage extends React.Component {
                     <TextInput 
                         style={styles.input} 
                         placeholder="Endereço"
-                        placeholderTextColor="black"
+                        placeholderTextColor="#808080"
                         />
+            </FormRow>
+            <FormRow>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="E-mail"
+                        placeholderTextColor="#808080"
+                    />
+            </FormRow>
+            <FormRow>
+                    <TextInput
+                        style={styles.input}
+                        placeholder="Senha"
+                        placeholderTextColor="#808080"
+                        secureTextEntry
+                    />
             </FormRow>
 
                     <View style={styles.alinharbutton}>
+
                         <Button  style={styles.buttoncadastrar}>
                         Cadastrar</Button>
-                    </View>                    
+                        
+                    </View>
+                    
+                                        
         </View>
         </ScrollView>                     
         )
@@ -56,11 +75,11 @@ const styles = StyleSheet.create ({
         borderColor: 'black',
         //backgroundColor: '#8cc53e',
         borderRadius: 6,
-        marginTop: 40,
+        marginTop: 30,
         //color: '#8cc53e' cor da letra
     },
     
-    buttonentrar:{
+    buttoncadastrar:{
         fontSize:17,
         color:'white',
         backgroundColor: '#6acd75',
@@ -70,16 +89,7 @@ const styles = StyleSheet.create ({
         width: 200
     },
 
-    buttoncadastrar:{
-        fontSize:17,
-        color:'white',
-        backgroundColor: '#4386ee',
-        padding: 10,
-        marginTop: 20,
-        borderRadius:10,
-        width: 200
-    },
-
+   
     alinharview:{
         flex: 1,
         //backgroundColor:'#e0f0e0'

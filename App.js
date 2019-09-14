@@ -1,13 +1,33 @@
 import { createAppContainer, createStackNavigator } from 'react-navigation';
 import LoginPage from './src/pages/LoginPage';
 import CadastroCliente from './src/pages/CadastroCliente';
+import MenuApp from './src/pages/MenuApp';
+import SolicitarPedido from './src/pages/SolicitarPedido';
 
 const AppNavigator = createStackNavigator({
-     'Login': {
+
+
+  'Login': {
+    screen: LoginPage
+  },
+
+  
+   'SolicitarPedido': {
+      screen: SolicitarPedido
+    },
+    
+  'Login': {
       screen: LoginPage
     },
     
-    'Cadastro': {
+  
+    
+  'Menu': {
+      screen: MenuApp
+    },
+  
+      
+  'Cadastro': {
       screen: CadastroCliente
     },
 
