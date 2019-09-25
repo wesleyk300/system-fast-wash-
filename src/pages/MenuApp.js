@@ -20,7 +20,7 @@ export default class MenuApp extends React.Component {
                         
             
                     <Button style={styles.buttonpedido}
-                            onPress={() => this.props.navigation.navigate('Cadastro')}
+                            onPress={() => this.props.navigation.navigate('test')}
                             >Histórico</Button>
 
                     <Button style={styles.buttonpedido}

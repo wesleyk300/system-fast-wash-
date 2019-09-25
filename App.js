@@ -5,11 +5,19 @@ import CadastroCliente from './src/pages/CadastroCliente';
 import MenuApp from './src/pages/MenuApp';
 import SolicitarPedido from './src/pages/SolicitarPedido';
 import CadastroClienteLogin from './src/pages/CadastroClienteLogin';
+import test from './src/pages/test';
 
 const AppNavigator = createStackNavigator({
 
+
+  
+
   'Login': {
     screen: LoginPage
+  },
+  
+  'test': {
+    screen: test
   },
 
 'Cadastro': {
